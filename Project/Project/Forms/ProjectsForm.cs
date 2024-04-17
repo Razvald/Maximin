@@ -52,6 +52,7 @@ namespace Project.Forms
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex?.Message);
                 MessageBox.Show(ex?.InnerException?.Message);
             }
         }
@@ -104,7 +105,6 @@ namespace Project.Forms
 
         private void UpdateProjectsList()
         {
-            // Обновляем список проектов после добавления нового
             dgvProjects.DataSource = null;
             dgvProjects.DataSource = _dbContext.Projects.ToList();
         }

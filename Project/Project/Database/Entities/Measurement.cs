@@ -8,6 +8,8 @@ namespace Project.Database.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-        public string? MeasurementResults { get; set; }
+        public int Value { get; set; }
+        public double XCoordinate { get; set; }
+        public double YCoordinate { get; set; }
     }
 }

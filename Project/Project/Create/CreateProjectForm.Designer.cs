@@ -43,7 +43,7 @@
             label6 = new Label();
             cmbEmpID = new ComboBox();
             label7 = new Label();
-            cmbMeasurementID = new ComboBox();
+            cmbRoutesID = new ComboBox();
             SuspendLayout();
             // 
             // btnAdd
@@ -171,24 +171,24 @@
             label7.AutoSize = true;
             label7.Location = new Point(12, 345);
             label7.Name = "label7";
-            label7.Size = new Size(98, 21);
+            label7.Size = new Size(46, 21);
             label7.TabIndex = 14;
-            label7.Text = "Измерения";
+            label7.Text = "Узел";
             // 
-            // cmbMeasurementID
+            // cmbRoutesID
             // 
-            cmbMeasurementID.FormattingEnabled = true;
-            cmbMeasurementID.Location = new Point(12, 369);
-            cmbMeasurementID.Name = "cmbMeasurementID";
-            cmbMeasurementID.Size = new Size(229, 29);
-            cmbMeasurementID.TabIndex = 15;
+            cmbRoutesID.FormattingEnabled = true;
+            cmbRoutesID.Location = new Point(12, 369);
+            cmbRoutesID.Name = "cmbRoutesID";
+            cmbRoutesID.Size = new Size(229, 29);
+            cmbRoutesID.TabIndex = 15;
             // 
             // CreateProjectForm
             // 
             AutoScaleDimensions = new SizeF(10F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(253, 529);
-            Controls.Add(cmbMeasurementID);
+            Controls.Add(cmbRoutesID);
             Controls.Add(label7);
             Controls.Add(cmbEmpID);
             Controls.Add(label6);
@@ -230,6 +230,6 @@
         private Label label6;
         private ComboBox cmbEmpID;
         private Label label7;
-        private ComboBox cmbMeasurementID;
+        private ComboBox cmbRoutesID;
     }
 }

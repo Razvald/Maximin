@@ -12,7 +12,6 @@ namespace Project.Database.Entities
         public string? ProjectName { get; set; }
         public string? ProjectDescription { get; set; }
         public DateTime OrderDate { get; set; }
-        public Status Status { get; set; }
         public int Cost { get; set; }
 
         [ForeignKey("User")]
@@ -21,17 +20,11 @@ namespace Project.Database.Entities
         [ForeignKey("Employee")]
         public int EmployeeID { get; set; }
 
-        [ForeignKey("Measurement")]
-        public int MeasurementID { get; set; }
+        [ForeignKey("Route")]
+        public int RouteID { get; set; }
 
         public virtual User User { get; set; }
         public virtual Employee Employee { get; set; }
-        public virtual Measurement Measurement { get; set; }
-    }
-
-    public enum Status
-    {
-        Complete,
-        Wainting
+        public virtual Route Route { get; set; }
     }
 }

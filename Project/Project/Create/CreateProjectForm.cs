@@ -1,7 +1,5 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using Project.Database;
+﻿using Project.Database;
 using Project.Database.Entities;
-using System.Diagnostics.Metrics;
 
 namespace Project.Forms
 {
@@ -27,40 +25,19 @@ namespace Project.Forms
                 cmbEmpID.Items.Add($"{employee.Name} (ID: {employee.ID})");
             }
 
-            foreach (var measurement in _dbContext.Measurements)
+            foreach (var route in _dbContext.Routes)
             {
-                cmbMeasurementID.Items.Add($"(ID: {measurement.ID})");
+                cmbRoutesID.Items.Add($"{route.RouteName} (ID: {route.ID})");
             }
         }
 
-        // Получение ID пользователя из выбранного имени в комбобоксе
-        private int GetUserIDFromComboBox()
+        private int GetIDFromComboBox(ComboBox comboBox)
         {
-            string selectedUser = cmbUserID.SelectedItem.ToString();
-            int startIndex = selectedUser.IndexOf("(ID: ") + 5;
-            int endIndex = selectedUser.IndexOf(")");
-            string userIDString = selectedUser.Substring(startIndex, endIndex - startIndex);
-            return int.Parse(userIDString);
-        }
-
-        // Получение ID сотрудника из выбранного имени в комбобоксе
-        private int GetEmployeeIDFromComboBox()
-        {
-            string selectedEmployee = cmbEmpID.SelectedItem.ToString();
-            int startIndex = selectedEmployee.IndexOf("(ID: ") + 5;
-            int endIndex = selectedEmployee.IndexOf(")");
-            string employeeIDString = selectedEmployee.Substring(startIndex, endIndex - startIndex);
-            return int.Parse(employeeIDString);
-        }
-
-        // Получение ID измерения из выбранного имени в комбобоксе
-        private int GetMeasurementIDFromComboBox()
-        {
-            string selectedMeasurement = cmbMeasurementID.SelectedItem.ToString();
-            int startIndex = selectedMeasurement.IndexOf("(ID: ") + 5;
-            int endIndex = selectedMeasurement.IndexOf(")");
-            string measurementIDString = selectedMeasurement.Substring(startIndex, endIndex - startIndex);
-            return int.Parse(measurementIDString);
+            string selected = comboBox.SelectedItem.ToString();
+            int startIndex = selected.IndexOf("(ID: ") + 5;
+            int endIndex = selected.IndexOf(")");
+            string iDString = selected.Substring(startIndex, endIndex - startIndex);
+            return int.Parse(iDString);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -79,9 +56,9 @@ namespace Project.Forms
                     ProjectDescription = txtDescription.Text,
                     OrderDate = datePickerOrderDate.Value,
                     Cost = Convert.ToInt32(txtCost.Text),
-                    UserID = GetUserIDFromComboBox(),
-                    EmployeeID = GetEmployeeIDFromComboBox(),
-                    MeasurementID = GetMeasurementIDFromComboBox()
+                    UserID = GetIDFromComboBox(cmbUserID),
+                    EmployeeID = GetIDFromComboBox(cmbEmpID),
+                    RouteID = GetIDFromComboBox(cmbRoutesID)
                 };
 
                 _dbContext.Projects.Add(newProject);
@@ -106,7 +83,7 @@ namespace Project.Forms
                    !string.IsNullOrEmpty(txtCost.Text) &&
                    cmbUserID.SelectedItem != null &&
                    cmbEmpID.SelectedItem != null &&
-                   cmbMeasurementID.SelectedItem != null;
+                   cmbRoutesID.SelectedItem != null;
         }
 
         private void CreateProjectForm_FormClosed(object sender, FormClosedEventArgs e)

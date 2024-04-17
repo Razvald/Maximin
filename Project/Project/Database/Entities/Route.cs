@@ -10,11 +10,6 @@ namespace Project.Database.Entities
         public int ID { get; set; }
         public string? RouteName { get; set; }
         public string? RouteDescription { get; set; }
-        public int RouteLength { get; set; }
-
-        [ForeignKey("ProjectID")]
-        public int ProjectID { get; set; }
-
-        public virtual Projekt Project { get; set; }
+        public int RouteLength { get; set; } = 0;
     }
 }
